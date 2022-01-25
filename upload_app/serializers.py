@@ -1,9 +1,8 @@
+from rest_framework import serializers
 from .models import Picture
-from django.forms import ModelForm
 
 
-class PictureForm(ModelForm):
-
+class PictureSerializer(serializers.ModelSerializer):
     class Meta:
         model = Picture
         fields = '__all__'

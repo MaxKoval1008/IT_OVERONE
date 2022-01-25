@@ -1,9 +1,9 @@
-<!-- Метод POST и установлен enctype -->
-<form method="post" enctype="multipart/form-data">
-{% csrf_token %}
-  <!-- myfile1 - переменная передающееся в Django -->
-  <input type="file" name="myfile1">
-  <button type="submit">Загрузка</button>
-</form>
+<!--&lt;!&ndash; Метод POST и установлен enctype &ndash;&gt;-->
+<!--<form method="post" enctype="multipart/form-data">-->
+<!--{% csrf_token %}-->
+<!--  &lt;!&ndash; myfile1 - переменная передающееся в Django &ndash;&gt;-->
+<!--  <input type="file" name="myfile1">-->
+<!--  <button type="submit">Загрузка</button>-->
+<!--</form>-->
 
-<p>Ссылка: <a href="{{ file_url }}">{{ file_url }}</a></p>
+<p>Ссылка: <a href="{{ img_obj }}">{{ img_obj }}</a></p>
