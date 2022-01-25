@@ -6,6 +6,7 @@ charset-normalizer==2.0.10
 coreapi==2.3.3
 coreschema==0.0.4
 da-vinci==0.3.0
+dehydrate==0.3.7
 Django==4.0.1
 django-filter==21.1
 django-rest-swagger==2.2.0
@@ -31,6 +32,7 @@ PyYAML==6.0
 requests==2.27.1
 shortuuid==1.0.8
 simplejson==3.17.6
+six==1.16.0
 sorl-thumbnail==12.7.0
 sqlparse==0.4.2
 uritemplate==4.1.1

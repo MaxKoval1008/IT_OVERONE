@@ -1,9 +1,38 @@
 from PIL import Image
 from django.db import models
+import hashlib
+import os
+
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+from django.db import models
+
+
+def upload_to(instance, filename):
+    ext = os.path.splitext(filename)[1].lower()
+    class_name = instance.__class__.__name__.lower()
+
+    h = hashlib.md5()
+    field = getattr(instance, 'file')
+    for chunk in field.chunks():
+        h.update(chunk)
+    name = h.hexdigest()
+
+    return os.path.join(
+        class_name,
+        name + ext,
+    )
+
+
+class OverwriteStorage(FileSystemStorage):
+    def get_available_name(self, name, max_length=None):
+        if self.exists(name):
+            os.remove(os.path.join(settings.MEDIA_ROOT, name))
+        return name
 
 
 class Picture(models.Model):
-    file = models.ImageField(upload_to='images/')
+    file = models.ImageField(storage=OverwriteStorage, upload_to=upload_to)
     width = models.PositiveIntegerField()
     height = models.PositiveIntegerField(blank=True, null=True)
 
